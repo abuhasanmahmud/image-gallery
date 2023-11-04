@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 const ImageGallery = ({ images, onDelete }) => {
   const [sortCriteria, setSortCriteria] = useState("name"); // Initial sorting criteria
   const [sortedImages, setSortedImages] = useState([...images]);
@@ -30,6 +31,7 @@ const ImageGallery = ({ images, onDelete }) => {
     onDelete(updatedImages);
     setSelectedImages([]);
     setSortedImages(updatedImages);
+    toast.success("delete successfully");
   };
 
   return (
