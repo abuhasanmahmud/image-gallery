@@ -1,14 +1,22 @@
 "use client";
-import Image from "next/image";
+
+import { images } from "@/utils/data";
 import ImageGallery from "./componets/ImageGallery";
-import Drag from "./componets/Drag";
+import { useState } from "react";
 
 export default function Home() {
-  // console.log("ss");
+  const [allImages, setImages] = useState(images);
+
+  const handleDelete = (updatedImages) => {
+    setImages(updatedImages);
+  };
   return (
     <>
-      <ImageGallery />
-      {/* <Drag /> */}
+      <div>
+        <h2 className="text-center my-8 text-2xl font-bold text-green-500">Image Gallery</h2>
+
+        <ImageGallery images={allImages} onDelete={handleDelete} />
+      </div>
     </>
   );
 }
